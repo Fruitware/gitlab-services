@@ -39,7 +39,7 @@ class HipchatService < Service
     ]
   end
 
-  def execute(push_data, type)
+  def execute(push_data, type = 'push')
     if type == 'merge'
       gate[room].send('GitLab', create_merge_message(push_data))
     else

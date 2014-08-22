@@ -10,7 +10,9 @@ module MergeRequests
         event_service.open_mr(merge_request, current_user)
         notification_service.new_merge_request(merge_request, current_user)
         merge_request.create_cross_references!(merge_request.project, current_user)
+        # @oresh Merge request created hook.
         execute_hooks(merge_request)
+        execute_services(merge_request)
       end
 
       merge_request
